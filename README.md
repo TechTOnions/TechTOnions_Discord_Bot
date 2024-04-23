@@ -18,6 +18,7 @@ This is an open-source Discord bot project developed using Python and Discord.py
 
 ## Setup
 
+# Backend
 1. Clone the repository:
    - https://github.com/pratyanj/discord-bot.git
 2. Create and activate a virtual environment
@@ -29,6 +30,8 @@ This is an open-source Discord bot project developed using Python and Discord.py
    - Make sure to set up Firestore according to the bot's database requirements.
 4. Add your bot token in `config.py`
 5. Run the bot: `python main.py`
+
+# Frontend
 
 ## Commands
 
