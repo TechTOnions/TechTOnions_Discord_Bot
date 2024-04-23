@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html{
+    font-family: "Jost", "sans-serif";
+    overflow: hidden;
+}
+
+*::-webkit-scrollbar {
+    max-width: 6px;
+    padding: 5px;
+    border-radius: 10%;
+}
+
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #1b2028;
+    /* background-color: aqua; */
+    border-radius: 10px;
+  }
+  * ::-webkit-scrollbar-thumb:focus {
+    background: #32373E; 
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-duration: 1000ms;
+  }
