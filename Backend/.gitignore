@@ -1,0 +1,5 @@
+__pycache__/
+bot/
+testing/
+config.py
+TO_bot.json
