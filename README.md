@@ -1,6 +1,4 @@
 # TechTOnions_Discord_Bot
-Here is a draft README.md file for your open source Discord bot repository:
-
 
 #### Discord_Bot_Backend
 # Discord Bot
