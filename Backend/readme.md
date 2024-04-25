@@ -22,8 +22,14 @@ This is an open-source Discord bot project developed using Python and Discord.py
    - `source venv/bin/activate` (Linux/MacOS) or `venv\Scripts\activate` (Windows)
 3. Install requirements: `pip install -r requirements.txt`
 4. Set up Firebase:
-   - Obtain the Firebase service account key file (TO_bot.json) and place it in the project directory.
-   - Make sure to set up Firestore according to the bot's database requirements.
+   - Go to Firebase Console:`https://console.firebase.google.com/`
+   - Click on Add Project.
+   - Enter a Project Name and click on Continue.
+   - After creating the app, you will be redirected to your project console.
+   - Click on the gear icon on the left side of the console and select       Project Settings.
+   - Click on Service Accounts and then select python.
+   - Click on Generate New Private Key and confirm by clicking on       Generate Key.
+
 4. Add your bot token in `config.py`
 5. Run the bot: `python main.py`
 
