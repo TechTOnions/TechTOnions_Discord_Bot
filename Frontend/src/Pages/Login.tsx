@@ -5,7 +5,9 @@ import { setLogin } from "../Hooks/Login-hook";
 
 function Login() {
   const code = useSearchParams()[0].get("code");
+
   if(code){
+    window.localStorage.setItem("code",code);
     setLogin({ code });
   }
   return (
