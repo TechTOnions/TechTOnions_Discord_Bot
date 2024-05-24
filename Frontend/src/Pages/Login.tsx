@@ -8,7 +8,7 @@ function Login() {
     setLogin({ code });
   }
   return (
-    <div>
+    <div className="w-full">
       <div className="h-screen font-sans ">
         <nav className="p-4 bg-navColor">
           <div className="container flex items-center justify-between mx-auto">
