@@ -5,19 +5,16 @@ import { useEffect } from "react";
 
 
 function Login() {
+  const code = useSearchParams()[0].get("code");
+  const navigate = useNavigate()
   useEffect(()=>{
-    const code = useSearchParams()[0].get("code");
-    const navigate = useNavigate()
     if(code){
       window.localStorage.setItem("code",code);
       navigate("/");
       // setLogin({ code });
     }
-    
   })
-
   return (
-    <div className="w-full">
       <div className="w-screen h-screen font-sans ">
         <nav className="p-4 bg-navColor">
           <div className="container flex items-center justify-between mx-auto">
@@ -97,7 +94,6 @@ function Login() {
           </div>
         </footer>
       </div>
-    </div>
   );
 }
 export default Login;
