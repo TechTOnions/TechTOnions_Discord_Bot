@@ -1,15 +1,21 @@
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "../Components/Button";
-import { setLogin } from "../Hooks/Login-hook";
+// import { setLogin } from "../Hooks/Login-hook";
+import { useEffect } from "react";
 
 
 function Login() {
-  const code = useSearchParams()[0].get("code");
+  useEffect(()=>{
+    const code = useSearchParams()[0].get("code");
+    const navigate = useNavigate()
+    if(code){
+      window.localStorage.setItem("code",code);
+      navigate("/");
+      // setLogin({ code });
+    }
+    
+  })
 
-  if(code){
-    window.localStorage.setItem("code",code);
-    setLogin({ code });
-  }
   return (
     <div className="w-full">
       <div className="w-screen h-screen font-sans ">
