@@ -1,13 +1,13 @@
-import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState} from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const setLogin = ({ code }: { code: string }) => {
-  const navigate = useNavigate();
-  useEffect(() => {
+  const navigate=useNavigate();
+  useEffect(()=>{
     window.localStorage.setItem("code", code);
-    navigate("/");
-  }, []);
+      navigate("/");
+  },[])
 };
 
 export const setLogout = () => {
@@ -18,7 +18,6 @@ export const setLogout = () => {
 };
 
 export const getData = () => {
-  
   const code = window.localStorage.getItem("code");
   const id = window.localStorage.getItem("id");
   const [idData,setidData]=useState();
@@ -27,7 +26,6 @@ export const getData = () => {
   useEffect(() => {
     if (effectRan.current === false && id===null) {
       const fetchData = async () => {
-        
         const Response = await axios.get(`${import.meta.env.VITE_IP}callback/?code=${code}`);
         if(Response.data){
           await window.localStorage.setItem("id",Response.data.user.id)

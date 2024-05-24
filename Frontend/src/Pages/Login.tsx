@@ -2,14 +2,15 @@ import { useSearchParams } from "react-router-dom";
 import { Button } from "../Components/Button";
 import { setLogin } from "../Hooks/Login-hook";
 
+
 function Login() {
   const code = useSearchParams()[0].get("code");
-  if (code) {
+  if(code){
     setLogin({ code });
   }
   return (
-    <div>
-      <div className="h-screen font-sans ">
+    <div className="w-full">
+      <div className="w-screen h-screen font-sans ">
         <nav className="p-4 bg-navColor">
           <div className="container flex items-center justify-between mx-auto">
             <h1 className="text-xl font-bold text-white">TechTOnions Bot</h1>
