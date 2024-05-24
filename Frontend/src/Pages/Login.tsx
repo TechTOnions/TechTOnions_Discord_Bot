@@ -1,12 +1,18 @@
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "../Components/Button";
 import { setLogin } from "../Hooks/Login-hook";
+import { useEffect } from "react";
 
 function Login() {
-  const code = useSearchParams()[0].get("code");
-  if (code) {
-    setLogin({ code });
-  }
+  const navigate=useNavigate();
+  useEffect(()=>{
+    const code = useSearchParams()[0].get("code");
+    if (code) {
+      setLogin({ code });
+      navigate("/");
+    }
+  },[])
+
   return (
     <div className="w-full">
       <div className="w-screen h-screen font-sans ">
