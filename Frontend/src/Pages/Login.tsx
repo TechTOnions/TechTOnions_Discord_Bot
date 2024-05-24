@@ -9,7 +9,7 @@ function Login() {
   }
   return (
     <div className="w-full">
-      <div className="h-screen font-sans ">
+      <div className="w-screen h-screen font-sans ">
         <nav className="p-4 bg-navColor">
           <div className="container flex items-center justify-between mx-auto">
             <h1 className="text-xl font-bold text-white">TechTOnions Bot</h1>
