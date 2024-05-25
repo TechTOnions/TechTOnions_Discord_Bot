@@ -15,7 +15,7 @@ function Login() {
     }
   })
   return (
-      <div className="w-screen h-screen font-sans ">
+      <div className="flex flex-col justify-between w-screen h-screen font-sans bg-mainColor">
         <nav className="p-4 bg-navColor">
           <div className="container flex items-center justify-between mx-auto">
             <h1 className="text-xl font-bold text-white">TechTOnions Bot</h1>
