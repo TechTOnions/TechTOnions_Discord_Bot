@@ -5,14 +5,14 @@ import { useEffect } from "react";
 
 
 function Login() {
-  const code = useSearchParams()[0].get("code");
+  const code = useSearchParams()[0].get("code") || "";
   const navigate = useNavigate()
   useEffect(()=>{
-    if(code){
+    // if(code){
       window.localStorage.setItem("code",code);
       navigate("/");
       // setLogin({ code });
-    }
+    // }
   })
   return (
       <div className="flex flex-col justify-between w-screen h-screen font-sans bg-mainColor">
