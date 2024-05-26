@@ -2,17 +2,18 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "../Components/Button";
 // import { setLogin } from "../Hooks/Login-hook";
 import { useEffect } from "react";
+import { setLogin } from "../Hooks/Login-hook";
 
 
 function Login() {
   const code = useSearchParams()[0].get("code") || "";
   const navigate = useNavigate()
   useEffect(()=>{
-    // if(code){
+    if(code){
       window.localStorage.setItem("code",code);
       navigate("/");
-      // setLogin({ code });
-    // }
+      setLogin({ code });
+    }
   })
   return (
       <div className="flex flex-col justify-between w-screen h-screen font-sans bg-mainColor">
