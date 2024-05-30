@@ -16,26 +16,23 @@ export const setLogout = () => {
   window.localStorage.removeItem("guild_id");
 };
 
-export const getData = () => {
-  const code = window.localStorage.getItem("code");
-  const id = window.localStorage.getItem("id");
-  const [idData,setidData]=useState();
-  const effectRan = useRef(false);
+// export const getData = () => {
   
-  useEffect(() => {
-    if (effectRan.current === false && id===null) {
-      const fetchData = async () => {
-        const Response = await axios.get(`${import.meta.env.VITE_IP}callback/?code=${code}`);
-        if(Response.data){
-          await window.localStorage.setItem("id",Response.data.user.id)
-          setidData(Response.data.user.id);
-          }
-      };
-      fetchData();
-    }
-    return () => {
-      effectRan.current = true;
-    };
-  }, []);
-  return idData;
-};
+  
+//   useEffect(() => {
+//     if (effectRan.current === false && id===null) {
+//       const fetchData = async () => {
+//         const Response = await axios.get(`${import.meta.env.VITE_IP}callback/?code=${code}`);
+//         if(Response.data){
+//           await window.localStorage.setItem("id",Response.data.user.id)
+//           setidData(Response.data.user.id);
+//           }
+//       };
+//       fetchData();
+//     }
+//     return () => {
+//       effectRan.current = true;
+//     };
+//   }, []);
+//   return idData;
+// };
