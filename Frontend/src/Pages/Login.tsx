@@ -11,7 +11,7 @@ function Login() {
   useEffect(()=>{
     if(code){
       window.localStorage.setItem("code",code);
-      navigate("/");
+      navigate("");
       setLogin({ code });
     }
   })
