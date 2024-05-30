@@ -14,7 +14,7 @@ export const MainRoute=()=>{
     const EffectRan = useRef(false);
 
     useEffect(()=>{
-      if(!EffectRan.current){
+      if(EffectRan.current === false && guild !=null ){
         const fetchData = async ()=>{
           const ChannelArray = await useGetChannels();
           const RoleArray = await useGetRoles();
@@ -22,7 +22,9 @@ export const MainRoute=()=>{
           setChannels(ChannelArray);
         }
         fetchData()
-        EffectRan.current=true;
+        return ()=>{
+          EffectRan.current=true;
+        }
       } 
     },[])
     
