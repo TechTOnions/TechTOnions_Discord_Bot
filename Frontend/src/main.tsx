@@ -24,12 +24,12 @@ import LeaveMessage from "./Pages/LeaveMessage.tsx";
 
 const router = createBrowserRouter([
   {
-    path: "",
+    path: "/",
     element: <ProtectedRoute />,
     errorElement:<ErrorRouter/>,
     children: [
       {
-        path: "",
+        path: "/",
         element: <MainRoute />,
         errorElement:<ErrorRouter/>,
         children: [
@@ -101,13 +101,13 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "serverlist",
+        path: "/serverlist",
         element: <ServerlistPage />,
       },
     ],
   },
   {
-    path: "login",
+    path: "/login",
     element: <Login />,
   },
 ]);

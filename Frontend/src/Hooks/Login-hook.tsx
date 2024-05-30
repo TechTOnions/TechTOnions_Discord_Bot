@@ -1,5 +1,5 @@
-import { useEffect} from "react";
-// import axios from "axios";
+import { useEffect, useRef, useState} from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export const setLogin = ({ code }: { code: string }) => {
@@ -16,23 +16,26 @@ export const setLogout = () => {
   window.localStorage.removeItem("guild_id");
 };
 
-// export const getData = () => {
+export const getData = () => {
+  const code = window.localStorage.getItem("code");
+  const id = window.localStorage.getItem("id");
+  const [idData,setidData]=useState();
+  const effectRan = useRef(false);
   
-  
-//   useEffect(() => {
-//     if (effectRan.current === false && id===null) {
-//       const fetchData = async () => {
-//         const Response = await axios.get(`${import.meta.env.VITE_IP}callback/?code=${code}`);
-//         if(Response.data){
-//           await window.localStorage.setItem("id",Response.data.user.id)
-//           setidData(Response.data.user.id);
-//           }
-//       };
-//       fetchData();
-//     }
-//     return () => {
-//       effectRan.current = true;
-//     };
-//   }, []);
-//   return idData;
-// };
+  useEffect(() => {
+    if (effectRan.current === false && id===null) {
+      const fetchData = async () => {
+        const Response = await axios.get(`${import.meta.env.VITE_IP}callback/?code=${code}`);
+        if(Response.data){
+          await window.localStorage.setItem("id",Response.data.user.id)
+          setidData(Response.data.user.id);
+          }
+      };
+      fetchData();
+    }
+    return () => {
+      effectRan.current = true;
+    };
+  }, []);
+  return idData;
+};
