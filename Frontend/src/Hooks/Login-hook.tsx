@@ -3,18 +3,17 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export const setLogin = ({ code }: { code: string }) => {
-  const navigate=useNavigate();
-  useEffect(()=>{
+  const navigate = useNavigate();
+  useEffect(() => {
     window.localStorage.setItem("code", code);
-      navigate("/");
-  },[])
+    navigate("/");
+  }, []);
 };
 
 export const setLogout = () => {
   window.localStorage.removeItem("code");
   window.localStorage.removeItem("id");
   window.localStorage.removeItem("guild_id");
-  window.location.reload();
 };
 
 export const getData = () => {
