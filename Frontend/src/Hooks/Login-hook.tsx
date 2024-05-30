@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState} from "react";
-import axios from "axios";
+import { useEffect} from "react";
+// import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export const setLogin = ({ code }: { code: string }) => {

@@ -10,7 +10,7 @@ export const ServerlistPage = () => {
   const id = window.localStorage.getItem("id");
   
   const [idData,setidData]=useState();
-  const [flag,setFlag]=useState();
+  // const [flag,setFlag]=useState();
   const effectRan = useRef(false);
   useEffect(()=>{
     if (effectRan.current === false && id===null) {
@@ -34,7 +34,7 @@ export const ServerlistPage = () => {
       <div className="sticky top-0 z-10 flex items-center h-12 px-16 py-4 bg-navColor">
         <Navbar />
       </div>
-      {idData || flag ? (
+      {idData ? (
         <div>
           <ServerlistComponent />
         </div>
