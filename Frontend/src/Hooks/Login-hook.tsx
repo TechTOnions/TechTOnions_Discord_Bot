@@ -6,14 +6,17 @@ export const setLogin = ({ code }: { code: string }) => {
   const navigate = useNavigate();
   useEffect(() => {
     window.localStorage.setItem("code", code);
-    navigate("/");
+    navigate("");
   }, []);
 };
 
 export const setLogout = () => {
+  const navigate = useNavigate();
   window.localStorage.removeItem("code");
   window.localStorage.removeItem("id");
   window.localStorage.removeItem("guild_id");
+  navigate("/")
+  window.location.reload();
 };
 
 export const getData = () => {

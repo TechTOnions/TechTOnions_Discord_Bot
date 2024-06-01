@@ -14,7 +14,7 @@ export const MainRoute=()=>{
     const EffectRan = useRef(false);
 
     useEffect(()=>{
-      if(EffectRan.current === false && guild !=null ){
+      if(!EffectRan.current && guild!=null){
         const fetchData = async ()=>{
           const ChannelArray = await useGetChannels();
           const RoleArray = await useGetRoles();
@@ -28,5 +28,5 @@ export const MainRoute=()=>{
       } 
     },[])
     
-    return  guild?<Outlet/>:<Navigate to={'/serverlist'}/>
+    return  guild?<Outlet/>:<Navigate to={'serverlist'}/>
   }
