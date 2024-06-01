@@ -7,7 +7,7 @@ import { ChannelListArray, Roles } from "../Interface";
 import { useGetRoles } from "../Hooks/Roles-hook";
 
 export const MainRoute=()=>{
-    
+    console.log("Main Main Route after protected route ")
     const guild= window.localStorage.getItem('guild_id');
     const setChannels= useSetRecoilState<ChannelListArray[]>(ChannelArray)
     const setRole = useSetRecoilState<Roles[]>(RoleArray);

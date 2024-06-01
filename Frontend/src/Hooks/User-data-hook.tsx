@@ -2,11 +2,11 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { AllServer, UserData, loading } from "../Atoms/State";
+import {UserData, loading } from "../Atoms/State";
+import { ServerListInterface } from "../Interface";
 
 export const useUserData = () => {
   const id = window.localStorage.getItem("id");
-  const setTotalServer = useSetRecoilState(AllServer);
   const setUser = useSetRecoilState(UserData);
   const setLoader = useSetRecoilState(loading);
   const effectRan = useRef(false);
@@ -16,11 +16,7 @@ export const useUserData = () => {
         const Response = await axios.get(
           `${import.meta.env.VITE_IP}available_users?user_id=${id}`
         );
-        const Response2 = await axios.get(
-          `${import.meta.env.VITE_IP}server_List/`
-        );
         await setUser(Response.data);
-        await setTotalServer(Response2.data);
         await setLoader(false);
       };
       fetchData();
@@ -41,35 +37,46 @@ interface Server {
 }
 
 interface ServerWithPresence extends Server {
-  isPresent: boolean;
+  isPresent: boolean | undefined;
   iconURL: string;
 }
 
 export const useGetserverdata = () => {
   const { guilds } = useRecoilValue(UserData);
-  const totalServer = useRecoilValue(AllServer);
+  // const totalServer = useRecoilValue(AllServer);
+  const[totalServer,setTotalServer]=useState<ServerListInterface>();
   const [userServerWithPresence, setUserServerWithPresence] = useState<ServerWithPresence[]>([]);
   const [loading, setLoading] = useState(true); 
-  console.table(guilds);
-  console.table(totalServer);
   useEffect(() => {
-    if (guilds && (totalServer.ServerList && totalServer)) {
-      const userServerWithPresence1:ServerWithPresence[] = guilds.map((server) => {
-        return {
-          ...server,
-          isPresent: totalServer?.ServerList?.some((obj) => obj.id === server.id),
-          iconURL: `https://cdn.discordapp.com/icons/${server.id}/${server.icon}.png?size=1024`,
-        };
-      });
-      setUserServerWithPresence(userServerWithPresence1);
-      setLoading(false);
+    if (guilds.length>0) {
+      const fetchData = async ()=>{
+        const Response2 = await axios.get(
+          `${import.meta.env.VITE_IP}server_List/`
+        );
+        setTotalServer(Response2.data)
+      }
+      fetchData();
+      console.log(guilds)
+      if(totalServer !==undefined){
+        console.table(totalServer)
+        const userServerWithPresence1:ServerWithPresence[] = guilds.map((server) => {
+          return {
+            ...server,
+            isPresent: totalServer?.ServerList.some((obj) => obj.id == server.id),
+            iconURL: `https://cdn.discordapp.com/icons/${server.id}/${server.icon}.png?size=1024`,
+          };
+        });
+        console.log(userServerWithPresence1)
+        setUserServerWithPresence(userServerWithPresence1);
+        setLoading(false);
+      }
+    }else {
+      console.log("No guild")
     }
-  }, [guilds, totalServer]);
+  }, [guilds,totalServer]);
   if (loading) {
     return { userServerWithPresence: [] }; // or return a loading state
   }
-  
-
   return {
     userServerWithPresence,
   };
