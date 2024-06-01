@@ -1,21 +1,17 @@
 import { useEffect, useRef, useState} from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 export const setLogin = ({ code }: { code: string }) => {
-  const navigate = useNavigate();
-  useEffect(() => {
     window.localStorage.setItem("code", code);
-    navigate("");
-  }, []);
+    window.location.assign('')
+    window.location.reload();
 };
 
 export const setLogout = () => {
-  const navigate = useNavigate();
   window.localStorage.removeItem("code");
   window.localStorage.removeItem("id");
   window.localStorage.removeItem("guild_id");
-  navigate("/")
+  window.location.assign('/')
   window.location.reload();
 };
 

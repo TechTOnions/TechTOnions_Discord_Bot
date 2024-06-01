@@ -15,12 +15,12 @@ function Login() {
         <nav className="p-4 bg-navColor">
           <div className="container flex items-center justify-between mx-auto">
             <h1 className="text-xl font-bold text-white">TechTOnions Bot</h1>
-            <ul className="flex space-x-4">
+            <div className="flex space-x-4">
               <Button
                 text={"Login"}
                 route={import.meta.env.VITE_DISCORD_AUTH}
               />
-            </ul>
+            </div>
           </div>
         </nav>
         <header className="container py-8 mx-auto text-center bg-mainColor">

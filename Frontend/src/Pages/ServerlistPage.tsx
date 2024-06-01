@@ -1,10 +1,14 @@
+// import { useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import { ServerlistComponent } from "../Components/ServerlistComponent";
 import { getData } from "../Hooks/Login-hook";
+import { useUserData } from "../Hooks/User-data-hook";
 
 export const ServerlistPage = () => {
+  console.log("Server List Page")
   const id = getData();
   const flag = window.localStorage.getItem("id");
+  useUserData();
 
   return (
     <div>
