@@ -1,9 +1,12 @@
+import { useRecoilValue } from "recoil";
 import image from "../Resources/images/TechTOnions Logo Compact 13.png"
 import Userprofile from "./Userprofile";
+import { UserData } from "../Atoms/State";
 
 function Navbar(): JSX.Element {
-  const img: string =
-    "https://images.pexels.com/photos/325521/pexels-photo-325521.jpeg";
+ 
+    const {user} = useRecoilValue(UserData);
+    console.log(user)
   return (
       <div className="flex items-center justify-between h-12 min-w-full gap-8">
         <div className="flex items-center gap-8">
@@ -14,7 +17,7 @@ function Navbar(): JSX.Element {
           </div>
         </div>
         <div className="flex items-center ">
-          <Userprofile name="Yash" img={img} />
+          <Userprofile name={user.username} id={user.id} avatar={user.avatar}  />
         </div>
         
       </div>

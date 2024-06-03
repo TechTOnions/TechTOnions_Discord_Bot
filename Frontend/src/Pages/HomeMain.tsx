@@ -1,13 +1,16 @@
+import { useRecoilValue } from "recoil";
 import CardBox from "../Components/CardBox";
 import HomeHeading from "../Components/HomeHeading";
+import { UserData } from "../Atoms/State";
 
 function HomeMain(): JSX.Element {
+  const {user}= useRecoilValue(UserData);
   return (
-    <div className="m-4  flex flex-col ">
-      <div className="font-medium  items-center flex justify-start  my-2 mx-5">
-        <HomeHeading name={"Yash"} />
+    <div className="flex flex-col m-4 ">
+      <div className="flex items-center justify-start mx-5 my-2 font-medium">
+        <HomeHeading name={user.username} />
       </div>
-      <div className="mx-5  mb-10 ">
+      <div className="mx-5 mb-10 ">
           <CardBox/>
       </div>
     </div>
