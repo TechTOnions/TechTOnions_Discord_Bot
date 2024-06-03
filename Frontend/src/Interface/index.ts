@@ -28,10 +28,6 @@ export interface userData {
     permissions_new: string;
     features: any[];
   }
-
-  export interface ServerListInterface {
-    ServerList: ServerList[]
-  }
   
   export interface ServerList {
     name: string
@@ -59,4 +55,18 @@ export interface ChannelListArray {
 export interface Roles {
   role:string,
   id:string | unknown
+}
+export interface Server {
+  id: string;
+  name: string;
+  icon?: string;
+  owner: boolean;
+  permissions: number;
+  permissions_new: string;
+  features: any[];
+}
+
+export interface ServerWithPresence extends Server {
+  isPresent: boolean | undefined;
+  iconURL: string;
 }
