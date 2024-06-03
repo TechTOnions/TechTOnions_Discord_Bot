@@ -38,8 +38,6 @@ export const useGetserverdata = () => {
   useUserData();
   useEffect(() => {
     if (guilds.length>0 && totalServer.length >0) {
-        console.log(guilds)
-        console.log(totalServer)
           const userServerWithPresence1:ServerWithPresence[] = guilds.map((server) => {
             const foundserver =totalServer.find((Tserver)=>Tserver.id == server.id);
             return {
@@ -49,10 +47,9 @@ export const useGetserverdata = () => {
             };
           });
           setUserServerWithPresence(userServerWithPresence1);
-          console.log(userServerWithPresence1)
           setLoading(false);
     }else {
-      console.log("No guild")
+      throw new Error()
     }
   }, [guilds]);
   if (loading) {

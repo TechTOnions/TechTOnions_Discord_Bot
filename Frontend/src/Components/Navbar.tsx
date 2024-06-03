@@ -5,8 +5,7 @@ import { UserData } from "../Atoms/State";
 
 function Navbar(): JSX.Element {
  
-    const {user} = useRecoilValue(UserData);
-    console.log(user)
+  const {user} = useRecoilValue(UserData);
   return (
       <div className="flex items-center justify-between h-12 min-w-full gap-8">
         <div className="flex items-center gap-8">

@@ -15,7 +15,7 @@ export const MainRoute=()=>{
     const setChannels= useSetRecoilState<ChannelListArray[]>(ChannelArray)
     const setRole = useSetRecoilState<Roles[]>(RoleArray);
     const EffectRan = useRef(false);
-
+  
     useEffect(()=>{
       if(!EffectRan.current && guild!=null){
         const fetchData = async ()=>{
@@ -34,6 +34,5 @@ export const MainRoute=()=>{
         }
       } 
     },[])
-    
     return  guild?<Outlet/>:<Navigate to={'serverlist'}/>
   }
