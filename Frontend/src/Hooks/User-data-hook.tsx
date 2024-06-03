@@ -49,7 +49,7 @@ export const useGetserverdata = () => {
           setUserServerWithPresence(userServerWithPresence1);
           setLoading(false);
     }else {
-      throw new Error()
+      console.log("Hello")
     }
   }, [guilds]);
   if (loading) {

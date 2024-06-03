@@ -11,7 +11,7 @@ export const setLogout = async () => {
   await window.localStorage.removeItem("code");
   await window.localStorage.removeItem("id");
   await window.localStorage.removeItem("guild_id");
-  window.location.replace("http://localhost:3000/")
+  window.location.replace(import.meta.env.VITE_LOGOUT_URI)
 };
 
 export const getData = () => {
