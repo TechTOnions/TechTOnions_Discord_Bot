@@ -11,7 +11,7 @@ export const setLogout = () => {
   window.localStorage.removeItem("code");
   window.localStorage.removeItem("id");
   window.localStorage.removeItem("guild_id");
-  window.location.assign('/')
+  window.location.assign('')
   window.location.reload();
 };
 

@@ -2,13 +2,11 @@
 import Navbar from "../Components/Navbar";
 import { ServerlistComponent } from "../Components/ServerlistComponent";
 import { getData } from "../Hooks/Login-hook";
-import { useUserData } from "../Hooks/User-data-hook";
 
 export const ServerlistPage = () => {
-  console.log("Server List Page")
   const id = getData();
   const flag = window.localStorage.getItem("id");
-  useUserData();
+  
 
   return (
     <div>
@@ -17,7 +15,7 @@ export const ServerlistPage = () => {
       </div>
       {id || flag ? (
         <div>
-          <ServerlistComponent />
+          <ServerlistComponent/>
         </div>
       ) : (
         <div className="flex items-center justify-center h-screen text-4xl font-bold text-white bg-slate-500 ">

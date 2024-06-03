@@ -4,11 +4,7 @@ import { ServerWithPresenceObject } from "../Interface";
 import { useNavigate } from "react-router-dom";
 
 export const ServerlistComponent = () => {
-  console.log("Server list comp")
   const {userServerWithPresence}=useGetserverdata();
-  // if(userServerWithPresence.length==0){
-  //   return <div>Jail</div>
-  // }
   return (
     <div className="h-screen text-white bg-mainColor">
       <div className="flex items-center justify-center py-12 ">

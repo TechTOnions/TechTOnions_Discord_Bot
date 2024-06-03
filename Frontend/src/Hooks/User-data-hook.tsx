@@ -1,10 +1,8 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import {AllServer, UserData, loading } from "../Atoms/State";
 import { ServerWithPresence } from "../Interface";
-// import { ServerListInterface } from "../Interface";
 
 export const useUserData = () => {
   const id = window.localStorage.getItem("id");
@@ -32,14 +30,12 @@ export const useUserData = () => {
     };
   }, []);
 };
-
-
 export const useGetserverdata = () => {
   const { guilds } = useRecoilValue(UserData);
   const totalServer = useRecoilValue(AllServer);
-  // const[totalServer,setTotalServer]=useState<ServerListInterface>();
   const [userServerWithPresence, setUserServerWithPresence] = useState<ServerWithPresence[]>([]);
   const [loading, setLoading] = useState(true); 
+  useUserData();
   useEffect(() => {
     if (guilds.length>0 && totalServer.length >0) {
         console.log(guilds)
@@ -55,7 +51,6 @@ export const useGetserverdata = () => {
           setUserServerWithPresence(userServerWithPresence1);
           console.log(userServerWithPresence1)
           setLoading(false);
-        
     }else {
       console.log("No guild")
     }
