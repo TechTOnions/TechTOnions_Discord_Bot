@@ -1,8 +1,7 @@
 import {  useSearchParams } from "react-router-dom";
 import { Button } from "../Components/Button";
-// import { setLogin } from "../Hooks/Login-hook";
-// import { useEffect } from "react";
 import { setLogin } from "../Hooks/Login-hook";
+import { LandingNavbar } from "./Landing page/LandingNavbar";
 
 
 function Login() {
@@ -12,17 +11,7 @@ function Login() {
   }
   return (
       <div className="flex flex-col justify-between w-screen h-screen font-sans bg-mainColor">
-        <nav className="p-4 bg-navColor">
-          <div className="container flex items-center justify-between mx-auto">
-            <h1 className="text-xl font-bold text-white">TechTOnions Bot</h1>
-            <div className="flex space-x-4">
-              <Button
-                text={"Login"}
-                route={import.meta.env.VITE_DISCORD_AUTH}
-              />
-            </div>
-          </div>
-        </nav>
+        <LandingNavbar/>
         <header className="container py-8 mx-auto text-center bg-mainColor">
           <h2 className="text-4xl font-bold text-cyan-300 ">
             Welcome to TechTOnions Bot
