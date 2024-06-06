@@ -4,7 +4,9 @@
 @tailwind utilities;
 html{
     font-family: "Jost", "sans-serif";
-    overflow: hidden;
+    /* overflow-x: hidden;
+    overflow-y: auto; */
+
 }
 
 *::-webkit-scrollbar {

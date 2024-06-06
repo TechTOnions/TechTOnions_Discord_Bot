@@ -10,7 +10,7 @@ function Login() {
     setLogin({ code });
   }
   return (
-      <div className="flex flex-col justify-between w-screen overflow-y-auto font-sans">
+      <div className="bg-red-100 ">
         <LandingNavbar/>
         <br />
         <Footer/>

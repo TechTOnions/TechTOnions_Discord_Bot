@@ -1,12 +1,14 @@
+import { Discord, Github, LinkedIn, X } from "../../Resources/Svg/SVG";
+import TechTOnionsLogo from "../../Resources/images/TechTOnions_Bot.png";
 export const Footer = () => {
   return (
-    <div className="h-auto p-8 text-white bg-navColor">
+    <div className="h-auto p-8 text-white  bg-navColor">
       <div className="flex items-center justify-center text-3xl font-bold">
         A Discord Bot
       </div>
-      <div className="grid justify-center grid-cols-6 my-8">
+      <div className="grid justify-center grid-cols-6 my-8 z-25">
         <div className="flex items-center justify-center col-span-2 p-4 text-4xl font-extrabold text-center">
-          TechTOnions
+          <img src={TechTOnionsLogo} alt="" className="h-16 w-18" />
         </div>
         <div className="col-span-2 gap-0 ">
           <div className="grid grid-cols-3">
@@ -33,9 +35,24 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-2">Socials</div>
+        <div className="flex items-center justify-start col-span-2 gap-4 px-12">
+          <div>
+            <Discord />
+          </div>
+          <div>
+            <LinkedIn />
+          </div>
+          <div>
+            <Github />
+          </div>
+          <div>
+            <X/>
+          </div>
+        </div>
       </div>
-      <div className="flex justify-center">2024-Designed by TechTOnions Team</div>
+      <div className="flex justify-center">
+        2024-Designed by TechTOnions Team
+      </div>
     </div>
   );
 };
