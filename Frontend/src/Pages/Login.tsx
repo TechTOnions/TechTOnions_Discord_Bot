@@ -2,6 +2,7 @@ import {  useSearchParams } from "react-router-dom";
 import { setLogin } from "../Hooks/Login-hook";
 import { LandingNavbar } from "./Landing page/LandingNavbar";
 import { Footer } from "./Landing page/Footer";
+import { Herosection } from "./Landing page/Herosection";
 
 
 function Login() {
@@ -10,9 +11,9 @@ function Login() {
     setLogin({ code });
   }
   return (
-      <div className="bg-red-100 ">
+      <div className="bg-black">
         <LandingNavbar/>
-        <br />
+        <Herosection/>
         <Footer/>
       </div>
   );

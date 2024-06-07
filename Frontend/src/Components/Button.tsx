@@ -8,7 +8,7 @@ interface Props{
 export const  Button=(props:Props)=> {
   const{route,text,setRed}=props  
   return (
-    <div className={ `${setRed?`bg-gradient-to-r from-red-500 to-red-700`:`bg-gradient-to-r from-cyan-500 to-blue-500`} px-2 py-1 duration-300 ease-in-out rounded-md cursor-pointer hover:bg-sidebarHead transiontion `}>
+    <div className={ `${setRed?`bg-gradient-to-r from-red-500 to-red-700`:`bg-gradient-to-r from-cyan-500 to-blue-500`} px-2 py-1 duration-300 text-base ease-in-out rounded-md cursor-pointer hover:bg-sidebarHead transiontion `}>
         {
           setRed?<button>  
           <Link to={route} target="_blank " rel="noopener noreferrer">
