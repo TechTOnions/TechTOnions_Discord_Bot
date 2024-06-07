@@ -2,7 +2,7 @@ import { Discord, Github, LinkedIn, X } from "../../Resources/Svg/SVG";
 import TechTOnionsLogo from "../../Resources/images/TechTOnions_Bot.png";
 export const Footer = () => {
   return (
-    <div className="h-auto p-8 text-white  bg-navColor">
+    <div className="h-auto p-8 text-white rounded-t-[48px] bg-navColor">
       <div className="flex items-center justify-center text-3xl font-bold">
         A Discord Bot
       </div>
