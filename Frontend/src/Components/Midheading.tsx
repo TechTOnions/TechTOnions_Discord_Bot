@@ -1,5 +1,5 @@
 interface Props{
-    head:String
+    head:string
 }
 
 function Midheading(props:Props) :JSX.Element {
