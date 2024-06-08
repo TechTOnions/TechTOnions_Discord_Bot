@@ -3,8 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 html{
-    font-family: "Jost", "sans-serif";
-    overflow: hidden;
+    font-family: "Jost", "sans-serif";  
 }
 
 *::-webkit-scrollbar {

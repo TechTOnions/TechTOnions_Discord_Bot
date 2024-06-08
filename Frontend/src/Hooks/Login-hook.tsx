@@ -1,19 +1,17 @@
 import { useEffect, useRef, useState} from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 export const setLogin = ({ code }: { code: string }) => {
-  const navigate = useNavigate();
-  useEffect(() => {
     window.localStorage.setItem("code", code);
-    navigate("/");
-  }, []);
+    window.location.assign('')
+    window.location.reload();
 };
 
-export const setLogout = () => {
-  window.localStorage.removeItem("code");
-  window.localStorage.removeItem("id");
-  window.localStorage.removeItem("guild_id");
+export const setLogout = async () => {
+  await window.localStorage.removeItem("code");
+  await window.localStorage.removeItem("id");
+  await window.localStorage.removeItem("guild_id");
+  window.location.replace(import.meta.env.VITE_LOGOUT_URI)
 };
 
 export const getData = () => {

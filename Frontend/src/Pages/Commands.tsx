@@ -12,7 +12,6 @@ function Commands(): JSX.Element {
   const handleSubmit = async () => {
     if (prefix) {
       const Response = await useSetPrefix({ new_prefix: prefix });
-      console.log(Response);
       alert(Response);
     }
   };

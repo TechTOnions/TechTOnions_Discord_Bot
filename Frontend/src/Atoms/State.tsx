@@ -1,5 +1,5 @@
 import { atom} from "recoil";
-import { ChannelListArray, Guild, Roles, User, userData} from "../Interface";
+import { ChannelListArray, Guild, Roles, ServerList,ServerWithPresenceObject, User, userData} from "../Interface";
 
 export const toggleState = atom({
     key: "toggleState",
@@ -37,4 +37,13 @@ export const ChannelArray = atom<ChannelListArray[]>({
 export const RoleArray = atom<Roles[]>({
     key:'roles',
     default:[] as Roles[]
+})
+
+export const AllServer = atom<ServerList[]>({
+    key:"Server List",
+    default:[] as ServerList[]
+})
+export const ServerWithPresenceArray=atom<ServerWithPresenceObject[]>({
+    key:"Server with Presence",
+    default:[] as ServerWithPresenceObject[]
 })

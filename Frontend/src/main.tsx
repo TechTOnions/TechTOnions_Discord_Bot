@@ -21,6 +21,9 @@ import Login from "./Pages/Login.tsx";
 import { MainRoute } from "./Pages/MainRoute.tsx";
 import { ServerlistPage } from "./Pages/ServerlistPage.tsx";
 import LeaveMessage from "./Pages/LeaveMessage.tsx";
+import { AboutPage } from "./Pages/Landing page/AboutPage.tsx";
+import { ContactPage } from "./Pages/Landing page/ContactPage.tsx";
+import { Homepage } from "./Pages/Landing page/Homepage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +32,7 @@ const router = createBrowserRouter([
     errorElement:<ErrorRouter/>,
     children: [
       {
-        path: "/",
+        path: "",
         element: <MainRoute />,
         errorElement:<ErrorRouter/>,
         children: [
@@ -107,8 +110,23 @@ const router = createBrowserRouter([
     ],
   },
   {
+
+
+    
     path: "/login",
     element: <Login />,
+    children:[
+      {
+        path:'home',
+        element:<Homepage/>
+      },{
+        path:'about-us',
+        element:<AboutPage/>
+      },{
+        path:'contact-us',
+        element:<ContactPage/>
+      }
+    ]
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")!).render(

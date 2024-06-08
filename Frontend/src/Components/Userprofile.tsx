@@ -3,12 +3,13 @@ import { useState } from "react";
 
 interface Props {
   name: string;
-  img: string;
+  id:string;
+  avatar:string
 }
 
 
 function Userprofile(props: Props): JSX.Element {
-  const { name, img } = props;
+  const { name,id,avatar } = props;
   const[isOpen,SetIsopen]=useState(false);
   
   return (
@@ -16,7 +17,7 @@ function Userprofile(props: Props): JSX.Element {
         {/* Image  And Name*/}
       <div className="flex items-center gap-3 justify-evenly">
         <div className="w-5 h-5 rounded">
-          <img src={img} className="w-full h-full rounded-full" alt="" />
+          <img src={`https://cdn.discordapp.com/avatars/${id}/${avatar}.webp?size=256`} className="w-full h-full rounded-full" alt="" />
         </div>
         <div className="text-sm font-medium text-white cursor-default">{name}</div>
       </div>
