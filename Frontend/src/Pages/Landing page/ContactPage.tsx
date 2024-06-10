@@ -1,7 +1,8 @@
-import { Herosection } from "./components/Herosection"
+import { ContactHero } from "./components/Hero-Contact"
+
 
 export const ContactPage = ()=>{
     return <div>
-        <Herosection/>
+        <ContactHero/>
     </div>
 }
