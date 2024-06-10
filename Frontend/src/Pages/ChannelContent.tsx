@@ -13,7 +13,7 @@ export default function Messages(): JSX.Element {
   const handleSubmitImage = async () => {
     if(channel){
       const Response = await useSetImageChannel({channel_id:channel});
-      // console.log(Response)
+      // log(Response)
       alert(Response.message)
     }
   };

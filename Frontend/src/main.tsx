@@ -23,7 +23,7 @@ import { ServerlistPage } from "./Pages/ServerlistPage.tsx";
 import LeaveMessage from "./Pages/LeaveMessage.tsx";
 import { AboutPage } from "./Pages/Landing page/AboutPage.tsx";
 import { ContactPage } from "./Pages/Landing page/ContactPage.tsx";
-import { Homepage } from "./Pages/Landing page/Homepage.tsx";
+import { Homepage } from "./Pages/Landing page/home/Homepage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -110,9 +110,6 @@ const router = createBrowserRouter([
     ],
   },
   {
-
-
-    
     path: "/login",
     element: <Login />,
     children:[
