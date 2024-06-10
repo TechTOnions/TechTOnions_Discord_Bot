@@ -13,7 +13,7 @@ export const LandingNavbar = () => {
     setUrl(pathname);
   },[pathname])
   return (
-    <div className="sticky top-0 px-16 py-4 bg-navColor">
+    <div className="sticky top-0 z-20 px-16 py-4 bg-navColor">
         <div className="container flex items-center justify-between mx-auto">
           <h1 className="text-xl font-bold text-white">
           <img src={TechTOnionsLogo} alt="" className="h-8 w-18" />

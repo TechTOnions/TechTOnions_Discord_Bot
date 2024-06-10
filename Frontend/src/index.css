@@ -10,16 +10,17 @@ html{
     max-width: 6px;
     padding: 5px;
     border-radius: 10%;
+    background-color: #26262a;
 }
 
   
   *::-webkit-scrollbar-thumb {
-    background-color: #1b2028;
+    background-color: #000000;
     /* background-color: aqua; */
     border-radius: 10px;
   }
-  * ::-webkit-scrollbar-thumb:focus {
-    background: #32373E; 
+  * ::-webkit-scrollbar-thumb:hover {
+    background: #363a41; 
     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
     animation-duration: 1000ms;
   }

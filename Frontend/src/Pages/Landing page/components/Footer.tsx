@@ -2,7 +2,7 @@ import { Discord, Github, LinkedIn, X } from "../../../Resources/Svg/SVG";
 import TechTOnionsLogo from "../../../Resources/images/TechTOnions_Bot.png";
 export const Footer = () => {
   return (
-    <div className="h-auto px-16 py-8 text-white rounded-t-[48px] bg-navColor">
+    <div className="h-auto px-16 py-8 text-white rounded-t-[48px] relative z-10 bg-navColor">
       <div className="grid justify-center grid-cols-6 my-8 z-25">
         <div className="flex items-center justify-start col-span-2 p-4 text-4xl font-extrabold text-center">
           <img src={TechTOnionsLogo} alt="" className="h-16 w-18" />
