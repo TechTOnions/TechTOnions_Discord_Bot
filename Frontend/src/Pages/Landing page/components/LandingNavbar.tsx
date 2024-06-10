@@ -8,7 +8,6 @@ export const LandingNavbar = () => {
   const navigate = useNavigate();
   const[url,setUrl]=useState('home')
   const {pathname} =useLocation();
-  console.log(pathname)
   useEffect(()=>{
     setUrl(pathname);
   },[pathname])
