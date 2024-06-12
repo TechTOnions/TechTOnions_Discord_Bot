@@ -14,7 +14,7 @@ function Home(): JSX.Element {
       {/* Main Content */}
       <div className="flex justify-between ">
         {/* Sidebar Content */}
-        <div className="h-screen bg-sideColor w-[20%] font-main pl-14 fixed top-12 z-10">
+        <div className=" bg-sideColor w-[20%] h-screen font-main pl-14 absolute left-0 top-12 z-10">
           <div className="flex items-center justify-center">
             <SidebarHeader />
           </div>
@@ -29,7 +29,7 @@ function Home(): JSX.Element {
           </div>
         </div>
         {/* Display Components */}
-        <div className=" bg-mainColor h-screen w-[80%] pr-14 absolute left-[20%] mb-8 overflow-auto pb-14 ">
+        <div className=" bg-mainColor h-screen w-[80%] pr-14 absolute left-[20%] mb-8 overflow-y-scroll pb-14 ">
           <Outlet />
         </div>
       </div>

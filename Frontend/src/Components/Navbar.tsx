@@ -7,7 +7,7 @@ function Navbar(): JSX.Element {
  
   const {user} = useRecoilValue(UserData);
   return (
-      <div className="flex items-center justify-between h-12 min-w-full gap-8">
+      <div className="top-0 flex items-center justify-between h-12 min-w-full gap-8 ">
         <div className="flex items-center gap-8">
           {/* Logo and Name */}
           <div className="flex items-center gap-2 cursor-default">
@@ -18,7 +18,6 @@ function Navbar(): JSX.Element {
         <div className="flex items-center ">
           <Userprofile name={user.username} id={user.id} avatar={user.avatar}  />
         </div>
-        
       </div>
   );
 }
