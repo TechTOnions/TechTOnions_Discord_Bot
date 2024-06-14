@@ -3,8 +3,7 @@ import axios from "axios";
 
 export const setLogin = ({ code }: { code: string }) => {
     window.localStorage.setItem("code", code);
-    window.location.assign('')
-    window.location.reload();
+    window.location.assign('/')
 };
 
 export const setLogout = async () => {
