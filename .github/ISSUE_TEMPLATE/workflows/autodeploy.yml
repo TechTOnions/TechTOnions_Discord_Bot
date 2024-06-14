@@ -1,0 +1,62 @@
+yml 
+
+name: Deploy TechTOnions App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build the project
+      run: npm run build
+
+    - name: Deploy to Server
+      env:
+        SSH_PRIVATE_KEY: ${{
+MIIEpAIBAAKCAQEAj21mmquE/+V82LsXCrREAzFwioefJZwHEPlL2rE6l3KCScCL
+fAZjp3R+8FmfFAYK5PtH9JA3NK78DsTyxoR23CHz7JAVihI1zYYi33Q83/DoK+DM
+MSYzNgp4LIoFH3LtQqPL5A7cSHCy0h017fHVPdvzpjbbStbxAbp6MKEn1LDjTBPJ
+MQApfhJ0yvf8LlG1Env3X6tqGGej6ADopXNXtO6G9d+pHd1Wmpc9ybDyzvXF1eAE
+mt8zhEiwa4AKvENASWJcoWEI6L3MRcKX/S2mevdP8vA5yCo1oqOOx50AxtIK+cpo
+8k/SqrG4cebZXUGGuklqG8HRFpvEWoikwrmnyQIDAQABAoIBACg1jm9MKJQo/RAx
+mysYEH0orhlYHijIDj8W9MoRp5BvvND6VuBlVijLAw9UwME3VHSPccPBboipieaG
+Fl3LIxthtWWbmz5DDqxYr4wfpTVO73flpLkesXq0Aq7R3s/LQ3LMQsvj0qPIXImF
+QOo9Qv/9mtf9Rws7KQPICJt7gpQgtzPLgceCLG81ZF4u8uolJfo75RxRUo7492vG
+4gdzGxNIJ6uuWGxvR6JVTm5B/s/7f9NXQ78bOi93hZHYb1I+JfER3CmMTqHW3s1w
+aQX0en5YuJ587bR7fuvqtw95RcvZevKUUW/a4zz3KXRAZYao7mmr87c3BshrMaJ8
+iGzAA4ECgYEA/sgjSb+N7Nk3RnNoS9xqKaX8ukvEG6reF8/SrDqHlGFt6DSw6shu
+N8AbzhekIUr7Ji1xmoVFjb7WzgaE9u7s2w9B/grloSkUTSw5cGUVykGDv84lDrUd
+2Etfg7H2ci8ImfU9kcm3UXOTGtvEXRrJ3VMuiTWntT0sRxwUjuTvj/kCgYEAkBz2
+CQzRuVDFHcRgnrwMhbvO581ExiBaNa66TFM33EMAgJrWYDdQYd1v2NDZ4GknFo37
++jidi3uoPQbVBc2t5SlMLFL0LaFLRO/itnL3p1lpbxOetCyZejSQAk3ItEgDiHP8
+i4Zyepzl7aR9AByIuq+RZ8I9o6ORp0WVxx/QalECgYEAwVCd5dEgILvXwu7CDf1Z
+1+wHzFq8m7mT9kFLuj5WrPEX8X45VotphYeQEVnCwTghQ6BreDDyy1Anr/8mWC6F
+LNlw2w7tmNCQhNWvZ2ZrmCEJlDkXyQcHdBwMhuI6+fxR7G81ni6Nl5G35kMlxPcU
+f4gj4RwC+fNGa1YVCy8NzhECgYEAi9TuDd34aR2sBbQUJDFG3URcAKM1xiCCJ3CA
+p6pfm0MP67lRpU5Gmo7oBbKwlYSyPrpJ8oKYq0yy83P7ooPt5Vtq498huly00hEJ
+JArtrd2d5f9dkGluChuSWAntYrA1bWNNenxb/AjdOPbPqxoEuU+9gLYCZRNDMtDc
+Abgm2+ECgYBM4ouN2RSzwnSDMIn1PP/S33hBmP2VWHxL3j8YETvQ7rjquT5lOz6g
+ik+7wThMS/zBRsQedXlU1MkfcepyS3uDtdGh7ZGrMTAt9oa2u68gY0JWgAtrmsPh
+UM1zy69d2xuy5oA649t+INZ7VjF5oVvVVCUUR5TJKeX7nph73SofHA==}}
+        SSH_HOST: ${{ ip-172-31-26-229 }}
+        SSH_USERNAME: ${{ ubuntu }}
+      run: |
+        echo "$SSH_PRIVATE_KEY" > private_key
+        chmod 600 private_key
+        rsync -avz -e "ssh -i private_key -o StrictHostKeyChecking=no" frontend/dist/ $ubuntu@$ip-172-31-26-229:/www/wwwroot/TechTOnions_Bot/Frontend
