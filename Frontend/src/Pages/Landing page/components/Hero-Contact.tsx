@@ -1,5 +1,5 @@
 export const ContactHero = ()=>{
-    return <div className="px-16 rounded-b-[48px] py-8 bg-[linear-gradient(164deg,_#070707_21%,_#009fff_100%)] min-h-[400px] flex justify-start items-center">
+    return <div className="px-16 rounded-b-[48px] z-10 relative py-8 bg-[linear-gradient(164deg,_#070707_21%,_#009fff_100%)] min-h-screen flex justify-start items-center">
     <div className="flex flex-col items-start justify-start gap-4 text-3xl font-bold text-white">
       <div className="flex flex-col gap-2">
         <div className="font-medium text-8xl">
