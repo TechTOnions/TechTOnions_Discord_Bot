@@ -10,10 +10,7 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-      
-    - name: Navigate
-      run: Frontend/
-      
+  
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
@@ -21,9 +18,11 @@ jobs:
 
     - name: Install dependencies
       run: npm install
+      working-directory: ./Frontend
 
     - name: Build the project
       run: npm run build
+      working-directory: ./Frontend
 
     - name: Deploy to Server
       env:
