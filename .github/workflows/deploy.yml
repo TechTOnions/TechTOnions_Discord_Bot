@@ -8,8 +8,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Navigate
-      run:  cd Frontend 
 
     - name: Checkout code
       uses: actions/checkout@v2
@@ -19,6 +17,8 @@ jobs:
       with:
         node-version: '14'
 
+    - name: Navigate
+      run:  cd Frontend 
     - name: Install dependencies
       run: npm install
 
