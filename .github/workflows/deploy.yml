@@ -8,18 +8,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-    - name: Set up Git for sparse checkout
-      run: |
-        git init
-        git remote add origin https://github.com/TechTOnions/TechTOnions_Discord_Bot 
-
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
     - name: Navigate
-      run:  cd .\Frontend\  
+      run: cd .\Frontend\
+      
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '20'
+        node-version: '14'
 
     - name: Install dependencies
       run: npm install
@@ -29,10 +27,10 @@ jobs:
 
     - name: Deploy to Server
       env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}  # Secret for SSH private key
-        SSH_HOST: ${{ secrets.SSH_HOST }}                # Secret for SSH host
-        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}        # Secret for SSH username
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }} 
+        SSH_HOST: ${{ secrets.SSH_HOST }}               
+        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}      
       run: |
         echo "$SSH_PRIVATE_KEY" > private_key
         chmod 600 private_key
-        rsync -avz --delete -e "ssh -i private_key -o StrictHostKeyChecking=no" /www/wwwroot/TechTOnions_Bot/Frontend/ $SSH_USERNAME@$SSH_HOST:/path/to/deploy
+        rsync -avz -e "ssh -i private_key -o StrictHostKeyChecking=no" Frontend/dist/ $SSH_USERNAME@$SSH_HOST:/www/wwwroot/TechTOnions_Bot/Frontend/
