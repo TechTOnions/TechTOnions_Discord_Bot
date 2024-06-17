@@ -4,7 +4,7 @@ import { Button } from "../../../Components/Button";
 
 export const Herosection = () => {
   return (
-    <div className="px-16 rounded-b-[48px] py-8 z-10 relative bg-[linear-gradient(164deg,_#070707_21%,_#009fff_100%)] min-h-screen flex justify-start items-center">
+    <div className="px-16 rounded-b-[48px] py-8 z-10 relative bg-[linear-gradient(164deg,_#070707_21%,_#009fff_100%)] max-h-0 flex justify-start items-center">
       <div className="flex flex-col items-start justify-start gap-4 text-3xl font-bold text-white">
         <div>
           <div className="w-full font-medium text-8xl ">Welcome To</div>
