@@ -9,8 +9,13 @@ jobs:
 
     steps:
 
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - name: Set up Git for sparse checkout
+      run: |
+        git init
+        git remote add origin https://github.com/TechTOnions/TechTOnions_Discord_Bot
+        git config core.sparseCheckout true
+        echo "Frontend/" > .git/info/sparse-checkout
+        git pull origin 'main'
 
     - name: Navigate
       run:  cd Frontend 
