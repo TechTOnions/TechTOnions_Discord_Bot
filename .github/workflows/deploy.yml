@@ -3,10 +3,20 @@ on:
     branches:
     - main
     - release/*
+    
+defaults:
+    run:
+      working-directory: ./Frontend
+
+env:
+  VITE_DISCORD_AUTH: ${{ secrets.VITE_DISCORD_AUTH }}
+  VITE_IP: ${{ secrets.VITE_IP }}
+  VITE_LOGOUT_URI: ${{ secrets.VITE_LOGOUT_URI }}
+  VITE_GITHUB_URI: ${{ secrets.VITE_GITHUB_URI }}
+      
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -14,15 +24,13 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: '20.x'
 
     - name: Install dependencies
       run: npm install
-      working-directory: ./Frontend
 
     - name: Build the project
       run: npm run build
-      working-directory: ./Frontend
 
     - name: Deploy to Server
       env:
@@ -32,4 +40,4 @@ jobs:
       run: |
         echo "$SSH_PRIVATE_KEY" > private_key
         chmod 600 private_key
-        rsync -avz -e "ssh -i private_key -o StrictHostKeyChecking=no" Frontend/ $SSH_USERNAME@$SSH_HOST:/www/wwwroot/TechTOnions_Bot/Frontend/
+        rsync -avz -e "ssh -i private_key -o StrictHostKeyChecking=no" Frontend/dist $SSH_USERNAME@$SSH_HOST:/www/wwwroot/TechTOnions_Bot/Frontend/
