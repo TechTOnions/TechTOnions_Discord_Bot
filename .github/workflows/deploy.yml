@@ -15,10 +15,7 @@ jobs:
         git remote add origin https://github.com/TechTOnions/TechTOnions_Discord_Bot
         git config core.sparseCheckout true
         echo "Frontend/" > .git/info/sparse-checkout
-        git pull origin 'main'
-
-    - name: Navigate
-      run:  cd Frontend 
+        git pull origin 'main' 
       
     - name: Set up Node.js
       uses: actions/setup-node@v2
