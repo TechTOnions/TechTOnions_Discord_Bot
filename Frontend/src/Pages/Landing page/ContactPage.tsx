@@ -12,7 +12,7 @@ export const ContactPage = () => {
                 </div>
                 <div className="text-6xl transition-all cursor-pointer hover:text-blue-600 hover:transition-all">
                     <NavLink to={'https://www.techtonions.com/to_company/contact-us/'}>
-                        https://support.techtonions.co
+                        https://support.techtonions.com
                     </NavLink>
                 </div>
             </div>
