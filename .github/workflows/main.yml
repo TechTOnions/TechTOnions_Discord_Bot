@@ -1,0 +1,33 @@
+on:
+  push:
+    branches:
+    - main
+    - release/*
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build the project
+      run: npm run build
+
+    - name: Deploy to Server
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}  # Secret for SSH private key
+        SSH_HOST: ${{ secrets.SSH_HOST }}                # Secret for SSH host
+        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}        # Secret for SSH username
+      run: |
+        echo "$SSH_PRIVATE_KEY" > private_key
+        chmod 600 private_key
+        rsync -avz --delete -e "ssh -i private_key -o StrictHostKeyChecking=no" /www/wwwroot/TechTOnions_Bot/Frontend/ $SSH_USERNAME@$SSH_HOST:/path/to/deploy
