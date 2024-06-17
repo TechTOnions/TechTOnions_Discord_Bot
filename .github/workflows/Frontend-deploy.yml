@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-    - main
+    - Deployment-branch
     - release/*
     
 defaults:
