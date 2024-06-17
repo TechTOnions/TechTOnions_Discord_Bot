@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Navigate
+      run:  cd Frontend 
+
     - name: Checkout code
       uses: actions/checkout@v2
 
