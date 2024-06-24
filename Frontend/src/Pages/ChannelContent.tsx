@@ -10,7 +10,7 @@ export default function Messages(): JSX.Element {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     SetChannel(e.target.value);
   };
-  const handleSubmitImage = async () => {
+  const useHandleSubmitImage = async () => {
     if(channel){
       const Response = await useSetImageChannel({channel_id:channel});
       // log(Response)
@@ -20,7 +20,7 @@ export default function Messages(): JSX.Element {
   const handleChangeLink= (e:React.ChangeEvent<HTMLSelectElement>)=>{
     SetChannel_link(e.target.value)
   }
-  const handleSubmitLink = async ()=>{
+  const useHandleSubmitLink = async ()=>{
     if(channel_Link){
       const Response =  await useSetLinkChannel({channel_id:channel_Link})
       alert(Response.message)
@@ -42,7 +42,7 @@ export default function Messages(): JSX.Element {
 
         <div className="">
           <MenuDropdown handleChange={handleChange} value={channel} />
-          <SubmitButton handleSubmit={handleSubmitImage} text="Submit" />
+          <SubmitButton handleSubmit={useHandleSubmitImage} text="Submit" />
         </div>
       </div>
 
@@ -58,7 +58,7 @@ export default function Messages(): JSX.Element {
 
         <div className="">
           <MenuDropdown handleChange={handleChangeLink} value={channel_Link} />
-          <SubmitButton handleSubmit={handleSubmitLink} text="Submit" />
+          <SubmitButton handleSubmit={useHandleSubmitLink} text="Submit" />
         </div>
       </div>
     </div>

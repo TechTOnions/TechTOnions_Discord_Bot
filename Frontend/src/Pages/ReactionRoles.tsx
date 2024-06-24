@@ -18,10 +18,10 @@ function ReactionRoles():JSX.Element {
   const handleChangeChannel = (e:React.ChangeEvent<HTMLSelectElement>) => {
   setChannelid(e.target.value);
   };
-  const handleSubmit = async ()=>{
+  const useHandleSubmit = async ()=>{
     if(roleId && channelid){
       const response = await useSetJoinMemberRole({channel_id:channelid,role_id:roleId})
-      alert(response.message);
+      alert(response.role_name + ' is Set');
     }
   }
   return (
@@ -42,7 +42,7 @@ function ReactionRoles():JSX.Element {
               <label htmlFor="dropdown" className="text-base font-medium text-white"> Select Channel</label>
               <MenuDropdown handleChange={handleChangeChannel} value={channelid}/>
             </div>
-            <SubmitButton handleSubmit={handleSubmit} text="submit"/>
+            <SubmitButton handleSubmit={useHandleSubmit} text="submit"/>
           </div>
         </div>
       </div>

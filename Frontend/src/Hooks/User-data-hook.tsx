@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import {AllServer, UserData, loading } from "../Atoms/State";
+import {AllServer, UserData, Loading } from "../Atoms/State";
 import { ServerWithPresence } from "../Interface";
 
 export const useUserData = () => {
   const id = window.localStorage.getItem("id");
   const setUser = useSetRecoilState(UserData);
   const setTotalServer = useSetRecoilState(AllServer)
-  const setLoader = useSetRecoilState(loading);
+  const setLoader = useSetRecoilState(Loading);
   const effectRan = useRef(false);
   useEffect(() => {
     if (effectRan.current === false && id) {
@@ -28,7 +28,8 @@ export const useUserData = () => {
     return () => {
       effectRan.current = true;
     };
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 };
 export const useGetserverdata = () => {
   const { guilds } = useRecoilValue(UserData);
@@ -48,9 +49,10 @@ export const useGetserverdata = () => {
           });
           setUserServerWithPresence(userServerWithPresence1);
           setLoading(false);
-    }else {
-      
+    }else{
+      setLoading(true)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [guilds]);
   if (loading) {
     return { userServerWithPresence: [] }; // or return a loading state

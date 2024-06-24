@@ -13,7 +13,7 @@ function LeaveMessage(): JSX.Element {
   const [value, setValue] = useState<string|unknown>();
   const ChannelArrays = useRecoilValue(ChannelArray);
 
-  const handleSubmit = async () => {
+  const useHandleSubmit = async () => {
     if (value) {
       const response = await useSetLeaveMessage({message});
       const responseChannel=  await useSelectLeaveChannel({guild_id:window.localStorage.getItem('guild_id') as string, channel_id:value as string})
@@ -57,7 +57,7 @@ function LeaveMessage(): JSX.Element {
       </div>
       <div className="mt-4">
 
-      <SubmitButton handleSubmit={handleSubmit}  text="Submit"/>
+      <SubmitButton handleSubmit={useHandleSubmit}  text="Submit"/>
       </div>
     </div>
   );

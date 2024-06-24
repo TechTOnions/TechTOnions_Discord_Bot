@@ -1,7 +1,7 @@
 import { atom} from "recoil";
 import { ChannelListArray, Guild, Roles, ServerList,ServerWithPresenceObject, User, userData} from "../Interface";
 
-export const toggleState = atom({
+export const ToggleState = atom({
     key: "toggleState",
     default: false,
 })
@@ -21,7 +21,7 @@ export const UserData =atom<userData>({
         guilds:[] as Guild[]
     } 
 })
-export const loading = atom({
+export const Loading = atom({
     key:"loading",
     default:true
 })

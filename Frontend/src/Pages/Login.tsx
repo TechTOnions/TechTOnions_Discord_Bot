@@ -1,5 +1,5 @@
 import {Navigate, Outlet, useLocation, useSearchParams } from "react-router-dom";
-import { setLogin } from "../Hooks/Login-hook";
+import {useSetLogin } from "../Hooks/Login-hook";
 import { LandingNavbar } from "./Landing page/components/LandingNavbar";
 import { Footer } from "./Landing page/components/Footer";
 import { useWindowSize } from "../Hooks/window-size";
@@ -9,7 +9,7 @@ import { DimensionIssue } from "../Components/DimensionIssue";
 function Login() {
   const code = useSearchParams()[0].get("code");
   if (code) {
-    setLogin({ code });
+    useSetLogin({ code });
   }
   const dimension = useWindowSize();
   const {pathname} = useLocation()

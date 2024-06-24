@@ -1,9 +1,9 @@
 import Navbar from "../Components/Navbar";
 import { ServerlistComponent } from "../Components/ServerlistComponent";
-import { getData } from "../Hooks/Login-hook";
+import {useGetData } from "../Hooks/Login-hook";
 
 export const ServerlistPage = () => {
-  const id = getData();
+  const id = useGetData()
   const flag = window.localStorage.getItem("id");
   return (
     <div>

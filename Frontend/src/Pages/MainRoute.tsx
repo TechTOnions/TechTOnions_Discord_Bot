@@ -18,7 +18,7 @@ export const MainRoute=()=>{
   
     useEffect(()=>{
       if(!EffectRan.current && guild!=null){
-        const fetchData = async ()=>{
+        const useFetchData = async ()=>{
           const Data = await axios.get(
             `${import.meta.env.VITE_IP}available_users?user_id=${id}`
           );
@@ -28,11 +28,12 @@ export const MainRoute=()=>{
           setRole(RoleArray)
           setChannels(ChannelArray);
         }
-        fetchData()
+        useFetchData()
         return ()=>{
           EffectRan.current=true;
         }
       } 
-    },[])
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[id])
     return  guild?<Outlet/>:<Navigate to={'serverlist'}/>
   }

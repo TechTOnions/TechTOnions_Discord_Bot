@@ -32,7 +32,7 @@ function LevelingUp() {
   const handleLevelInput = (e:React.ChangeEvent<HTMLInputElement>) => {
    setLevel(e.target.value);
   }
-  const handleSubmit = async ()=>{
+  const useHandleSubmit = async ()=>{
     if(value && level){
        const response = await useSetLevelRole({role_id:value,level:level});
        await alert(response.message);
@@ -57,7 +57,7 @@ function LevelingUp() {
           <input type="text" onChange={handleLevelInput} className="w-full text-center text-white outline-none bg-navColor" />
         </div>
       </div>
-      <SubmitButton handleSubmit={handleSubmit} text="Submit"/>
+      <SubmitButton handleSubmit={useHandleSubmit} text="Submit"/>
     </div>
   );
 }

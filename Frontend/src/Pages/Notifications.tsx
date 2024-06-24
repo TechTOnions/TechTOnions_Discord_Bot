@@ -29,12 +29,12 @@ const SubscribedChannelList = ()=>{
   const EffectRan= useRef(false)
   useEffect(()=>{
     if(EffectRan.current===false){
-      const fetchData =  async()=>{
+      const useFetchData =  async()=>{
         const response = await useGetYoutubeChannel();
         setChannels(response)
         EffectRan.current=true
       }
-      fetchData();
+      useFetchData();
     }
     return ()=>{
       EffectRan.current=true
@@ -53,7 +53,7 @@ const SubscribedChannelList = ()=>{
 } 
 const RemoveChannel = ()=>{
   const [channel, SetChannel] = useState("");
-  const handleSubmit = async () => {
+  const useHandleSubmit = async () => {
     if(channel){
       const response = await useRemoveChannel({channel});
       alert(response.message);
@@ -86,7 +86,7 @@ const RemoveChannel = ()=>{
         <button
           type="button"
           className="px-6 py-1 font-medium rounded-md bg-gradient-to-r from-red-600 bg- to-red-800"
-          onClick={handleSubmit}
+          onClick={useHandleSubmit}
         >
           Remove
         </button>
@@ -100,7 +100,7 @@ export function NotificationPopUp(): JSX.Element {
   
   const [value, setValue] = useState<string | unknown>();
   const guild_id = window.localStorage.getItem("guild_id") as string;
-  const handleSubmit = async () => {
+  const useHandleSubmit = async () => {
     if(value){
       const response = await useYtChannelSet({guild_id,channel_id:value as string});
       const ChannelSetResponse = await useSetYoutubeCreatorChannel({guild_id,yt_Channel_name:channel});
@@ -143,7 +143,7 @@ export function NotificationPopUp(): JSX.Element {
         <button
           type="button"
           className="px-6 py-1 font-medium rounded-md bg-gradient-to-r from-cyan-500 to-blue-500"
-          onClick={handleSubmit}
+          onClick={useHandleSubmit}
         >
           Submit
         </button>
