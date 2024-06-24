@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export const ServerlistComponent = () => {
   const {userServerWithPresence}=useGetserverdata();
+  console.log(userServerWithPresence)
   return (
     <div className="h-screen text-white bg-mainColor">
       <div className="flex items-center justify-center py-12 ">
@@ -14,9 +15,15 @@ export const ServerlistComponent = () => {
       </div>
       <div className="w-2/3 mx-auto my-0">
         <div className="grid content-center grid-cols-3 gap-4 px-6 py-4 justify-items-center">
-          {userServerWithPresence.map((server:any) => (
-            <ServerCard key={server.id} data={server} />
-          ))}
+          {
+            userServerWithPresence ?
+            userServerWithPresence.map((server) => (
+              <ServerCard key={server.id} data={server} />
+            )):
+            <div className="w-full col-span-3 text-2xl font-semibold text-center ">
+              You don't have admin Access in Any server
+            </div>
+          }
         </div>
       </div>
     </div>
