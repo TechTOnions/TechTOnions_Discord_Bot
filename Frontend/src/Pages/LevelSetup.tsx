@@ -22,24 +22,24 @@ function LevelSetup() {
 }
 
 function LevelingUp() {
-  const [value,setValue] = useState(" ");
-  const [level,setLevel] = useState("");
+  const [value, setValue] = useState(" ");
+  const [level, setLevel] = useState("");
   const roles = useRecoilValue(RoleArray);
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-     setValue(e.target.value);
+    setValue(e.target.value);
   };
-  const handleLevelInput = (e:React.ChangeEvent<HTMLInputElement>) => {
-   setLevel(e.target.value);
-  }
-  const handleSubmit = async ()=>{
-    if(value && level){
-       const response = await useSetLevelRole({role_id:value,level:level});
-       await alert(response.message);
-       setValue("");
-       setLevel("");
+  const handleLevelInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLevel(e.target.value);
+  };
+  const useHandleSubmit = async () => {
+    if (value && level) {
+      const response = await useSetLevelRole({ role_id: value, level: level });
+      await alert(response.message);
+      setValue("");
+      setLevel("");
     }
-  }
+  };
   return (
     <div className="bg-LevelBox rounded-lg w-[80%] px-4 py-4 text-slate-200">
       <div className="text-lg font-semibold">Levelling Up</div>
@@ -48,16 +48,20 @@ function LevelingUp() {
         the user.
       </div>
       <div className="flex flex-col items-start ">
-        <div className="font-medium text-gray-600">Level up announcement</div>  
-          <MenuDropdown roles={roles} handleChange={handleChange} value={value}/>
+        <div className="font-medium text-gray-600">Level up announcement</div>
+        <MenuDropdown roles={roles} handleChange={handleChange} value={value} />
       </div>
       <div className="flex flex-col items-start">
         <div className="font-medium text-gray-600">Enter Level (Number)</div>
         <div className="flex justify-center py-2 my-2 rounded-lg bg-navColor">
-          <input type="text" onChange={handleLevelInput} className="w-full text-center text-white outline-none bg-navColor" />
+          <input
+            type="text"
+            onChange={handleLevelInput}
+            className="w-full text-center text-white outline-none bg-navColor"
+          />
         </div>
       </div>
-      <SubmitButton handleSubmit={handleSubmit} text="Submit"/>
+      <SubmitButton handleSubmit={useHandleSubmit} text="Submit" />
     </div>
   );
 }

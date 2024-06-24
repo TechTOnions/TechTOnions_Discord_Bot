@@ -3,27 +3,41 @@ import { useState } from "react";
 
 interface Props {
   name: string;
-  id:string;
-  avatar:string
+  id: string;
+  avatar: string;
 }
 
-
 function Userprofile(props: Props): JSX.Element {
-  const { name,id,avatar } = props;
-  const[isOpen,SetIsopen]=useState(false);
-  
+  const { name, id, avatar } = props;
+  const [isOpen, SetIsopen] = useState(false);
+
   return (
-    <div className={"flex items-center justify-between gap-4 px-2 py-1 rounded-3xl hover:bg-[#32373E] hover:transition transition hover:duration-200"}>
-        {/* Image  And Name*/}
+    <div
+      className={
+        "flex items-center justify-between gap-4 px-2 py-1 rounded-3xl hover:bg-[#32373E] hover:transition transition hover:duration-200"
+      }
+    >
+      {/* Image  And Name*/}
       <div className="flex items-center gap-3 justify-evenly">
         <div className="w-5 h-5 rounded">
-          <img src={`https://cdn.discordapp.com/avatars/${id}/${avatar}.webp?size=256`} className="w-full h-full rounded-full" alt="" />
+          <img
+            src={`https://cdn.discordapp.com/avatars/${id}/${avatar}.webp?size=256`}
+            className="w-full h-full rounded-full"
+            alt=""
+          />
         </div>
-        <div className="text-sm font-medium text-white cursor-default">{name}</div>
+        <div className="text-sm font-medium text-white cursor-default">
+          {name}
+        </div>
       </div>
       {/* Logo */}
       <div className="flex items-center justify-center text-center text-white">
-        <button  onClick={()=>{SetIsopen(prev=>!prev)}} className="">
+        <button
+          onClick={() => {
+            SetIsopen((prev) => !prev);
+          }}
+          className=""
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -40,11 +54,13 @@ function Userprofile(props: Props): JSX.Element {
           </svg>
         </button>
       </div>
-      {isOpen?
-          <div className="w-[8%] h-[10%] absolute right-14 top-12 z-1 transition">
-            <Dropdown/>
-          </div>:
-        ""}
+      {isOpen ? (
+        <div className="w-[8%] h-[10%] absolute right-14 top-12 z-1 transition">
+          <Dropdown />
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

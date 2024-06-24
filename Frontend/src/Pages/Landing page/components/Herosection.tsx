@@ -13,19 +13,20 @@ export const Herosection = () => {
           </div>
         </div>
         <div className="py-2 text-3xl font-medium text-gray-400">
-           <div>
-           Multipurpose Discord bot.
-           </div>
-           <div>
-            Fully Customizable.
-           </div>
-           <div>
-            Completely Free and OpenSource.
-           </div>
+          <div>Multipurpose Discord bot.</div>
+          <div>Fully Customizable.</div>
+          <div>Completely Free and OpenSource.</div>
         </div>
         <div className="flex items-center gap-4">
-          <Button text="Add to Discord" route={import.meta.env.VITE_DISCORD_AUTH}/>
-          <Button text="Contribute" route={import.meta.env.VITE_GITHUB_URI}setRed={true} />
+          <Button
+            text="Add to Discord"
+            route={import.meta.env.VITE_DISCORD_AUTH}
+          />
+          <Button
+            text="Contribute"
+            route={import.meta.env.VITE_GITHUB_URI}
+            setRed={true}
+          />
         </div>
       </div>
     </div>
