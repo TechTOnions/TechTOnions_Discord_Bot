@@ -1,10 +1,10 @@
-interface Props{
-    type:string;
-    placeholder:string
+interface Props {
+  type: string;
+  placeholder: string;
 }
 
-function InputBox(props:Props) {
-    const{type,placeholder}=props
+function InputBox(props: Props) {
+  const { type, placeholder } = props;
   return (
     <div className="px-6 flex justify-center items-center bg-lightbg rounded-lg">
       <input

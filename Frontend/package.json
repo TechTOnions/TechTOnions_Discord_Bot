@@ -7,7 +7,9 @@
     "dev": "vite --port 3000",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview "
+    "preview": "vite preview ",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "checks":"npm run lint && npm run format"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
@@ -33,6 +35,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "postcss": "^8.4.35",
+    "prettier": "3.3.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",
     "vite": "^5.1.0"

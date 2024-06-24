@@ -1,7 +1,5 @@
 function AutoModeration() {
-  return (
-    <div>AutoModeration</div>
-  )
+  return <div>AutoModeration</div>;
 }
 
-export default AutoModeration
+export default AutoModeration;

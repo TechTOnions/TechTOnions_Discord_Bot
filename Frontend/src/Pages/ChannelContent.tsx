@@ -2,7 +2,10 @@ import { useState } from "react";
 import { MenuDropdown } from "../Components/MenuDropdown";
 import { SubmitButton } from "../Components/Button";
 import Heading from "../Components/Heading";
-import { useSetImageChannel, useSetLinkChannel } from "../Hooks/Channel-content-hook";
+import {
+  useSetImageChannel,
+  useSetLinkChannel,
+} from "../Hooks/Channel-content-hook";
 
 export default function Messages(): JSX.Element {
   const [channel, SetChannel] = useState("");
@@ -10,22 +13,22 @@ export default function Messages(): JSX.Element {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     SetChannel(e.target.value);
   };
-  const handleSubmitImage = async () => {
-    if(channel){
-      const Response = await useSetImageChannel({channel_id:channel});
+  const useHandleSubmitImage = async () => {
+    if (channel) {
+      const Response = await useSetImageChannel({ channel_id: channel });
       // log(Response)
-      alert(Response.message)
+      alert(Response.message);
     }
   };
-  const handleChangeLink= (e:React.ChangeEvent<HTMLSelectElement>)=>{
-    SetChannel_link(e.target.value)
-  }
-  const handleSubmitLink = async ()=>{
-    if(channel_Link){
-      const Response =  await useSetLinkChannel({channel_id:channel_Link})
-      alert(Response.message)
+  const handleChangeLink = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    SetChannel_link(e.target.value);
+  };
+  const useHandleSubmitLink = async () => {
+    if (channel_Link) {
+      const Response = await useSetLinkChannel({ channel_id: channel_Link });
+      alert(Response.message);
     }
-  }
+  };
   return (
     <div className="mt-10 ml-8">
       <Heading head="Channel Content" />
@@ -42,7 +45,7 @@ export default function Messages(): JSX.Element {
 
         <div className="">
           <MenuDropdown handleChange={handleChange} value={channel} />
-          <SubmitButton handleSubmit={handleSubmitImage} text="Submit" />
+          <SubmitButton handleSubmit={useHandleSubmitImage} text="Submit" />
         </div>
       </div>
 
@@ -58,7 +61,7 @@ export default function Messages(): JSX.Element {
 
         <div className="">
           <MenuDropdown handleChange={handleChangeLink} value={channel_Link} />
-          <SubmitButton handleSubmit={handleSubmitLink} text="Submit" />
+          <SubmitButton handleSubmit={useHandleSubmitLink} text="Submit" />
         </div>
       </div>
     </div>

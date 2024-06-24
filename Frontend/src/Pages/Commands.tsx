@@ -9,7 +9,7 @@ function Commands(): JSX.Element {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     Setprefix(e.target.value);
   };
-  const handleSubmit = async () => {
+  const useHandleSubmit = async () => {
     if (prefix) {
       const Response = await useSetPrefix({ new_prefix: prefix });
       alert(Response);
@@ -39,7 +39,7 @@ function Commands(): JSX.Element {
           ></input>
         </div>
         <div className="flex items-center justify-center ">
-          <SubmitButton handleSubmit={handleSubmit} text="Submit" />
+          <SubmitButton handleSubmit={useHandleSubmit} text="Submit" />
         </div>
       </div>
 
@@ -101,7 +101,6 @@ function Commands(): JSX.Element {
           </svg>
         </div>
       </div>
-
     </div>
   );
 }

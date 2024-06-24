@@ -1,43 +1,65 @@
 on:
   push:
     branches:
-    - Deployment-branch
-    - release/*
-    
+      - Deployment-branch
+      - release/*
+  pull_request:
+    branches:
+      - main
+
 defaults:
-    run:
-      working-directory: ./Frontend
+  run:
+    working-directory: ./Frontend
 
 env:
   VITE_DISCORD_AUTH: ${{ secrets.VITE_DISCORD_AUTH }}
   VITE_IP: ${{ secrets.VITE_IP }}
   VITE_LOGOUT_URI: ${{ secrets.VITE_LOGOUT_URI }}
   VITE_GITHUB_URI: ${{ secrets.VITE_GITHUB_URI }}
-      
+
 jobs:
   build:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-  
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '20.x'
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.x'
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Build the project
-      run: npm run build
+      - name: Build the project
+        run: npm run build
 
-    - name: Deploy to Server
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }} 
-        SSH_HOST: ${{ secrets.SSH_HOST }}               
-        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}      
-      run: |
-        echo "$SSH_PRIVATE_KEY" > private_key
-        chmod 600 private_key
-        rsync -avz -e "ssh -i private_key -o StrictHostKeyChecking=no" dist/. $SSH_USERNAME@$SSH_HOST:/www/wwwroot/TechTOnions_Bot/Frontend/
+      - name: Deploy to Server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }} 
+          SSH_HOST: ${{ secrets.SSH_HOST }}               
+          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}      
+        run: |
+          echo "$SSH_PRIVATE_KEY" > private_key
+          chmod 600 private_key
+          rsync -avz -e "ssh -i private_key -o StrictHostKeyChecking=no" dist/. $SSH_USERNAME@$SSH_HOST:/www/wwwroot/TechTOnions_Bot/Frontend/
+
+  format:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.x'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Format code
+        run: npm run format

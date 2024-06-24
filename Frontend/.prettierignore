@@ -1,0 +1,16 @@
+dist 
+node_modules
+.env
+tailwind.config.js
+
+# Ignore artifacts:
+build
+coverage
+
+# Ignore all HTML files:
+**/*.html
+
+vite-env.d.ts 
+vite.config.ts
+
+**.md

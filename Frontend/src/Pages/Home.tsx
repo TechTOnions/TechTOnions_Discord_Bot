@@ -19,13 +19,11 @@ function Home(): JSX.Element {
             <SidebarHeader />
           </div>
           <div>
-            <Sidebar/>
+            <Sidebar />
           </div>
-          <div className="text-[#909498] text-[13px] font-medium" >
-            MODULES
-          </div>
+          <div className="text-[#909498] text-[13px] font-medium">MODULES</div>
           <div>
-            <SidebarSecondHalf/>
+            <SidebarSecondHalf />
           </div>
         </div>
         {/* Display Components */}

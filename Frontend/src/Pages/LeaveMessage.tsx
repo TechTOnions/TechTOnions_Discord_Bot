@@ -1,6 +1,9 @@
-import {useState } from "react";
+import { useState } from "react";
 import Heading from "../Components/Heading";
-import { useSelectLeaveChannel, useSetLeaveMessage } from "../Hooks/Message-Hook";
+import {
+  useSelectLeaveChannel,
+  useSetLeaveMessage,
+} from "../Hooks/Message-Hook";
 import { SubmitButton } from "../Components/Button";
 import { useRecoilValue } from "recoil";
 import { ChannelArray } from "../Atoms/State";
@@ -10,20 +13,25 @@ const defaultText =
 
 function LeaveMessage(): JSX.Element {
   const [message, setMessage] = useState(defaultText);
-  const [value, setValue] = useState<string|unknown>();
+  const [value, setValue] = useState<string | unknown>();
   const ChannelArrays = useRecoilValue(ChannelArray);
 
-  const handleSubmit = async () => {
+  const useHandleSubmit = async () => {
     if (value) {
-      const response = await useSetLeaveMessage({message});
-      const responseChannel=  await useSelectLeaveChannel({guild_id:window.localStorage.getItem('guild_id') as string, channel_id:value as string})
-      
-      if(response && responseChannel){
-        alert("Welcome Message Updated on " + `"${ChannelArrays?.find((channel)=>channel.id===value)?.channel}" Channel`)
+      const response = await useSetLeaveMessage({ message });
+      const responseChannel = await useSelectLeaveChannel({
+        guild_id: window.localStorage.getItem("guild_id") as string,
+        channel_id: value as string,
+      });
+
+      if (response && responseChannel) {
+        alert(
+          "Welcome Message Updated on " +
+            `"${ChannelArrays?.find((channel) => channel.id === value)?.channel}" Channel`,
+        );
       }
-    }
-    else{
-      alert("Please select a channel")
+    } else {
+      alert("Please select a channel");
     }
   };
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -40,7 +48,7 @@ function LeaveMessage(): JSX.Element {
         </div>
 
         <div>
-          <MenuDropdown value={value as string} handleChange={handleChange}/>
+          <MenuDropdown value={value as string} handleChange={handleChange} />
         </div>
 
         <textarea
@@ -56,13 +64,10 @@ function LeaveMessage(): JSX.Element {
         ></textarea>
       </div>
       <div className="mt-4">
-
-      <SubmitButton handleSubmit={handleSubmit}  text="Submit"/>
+        <SubmitButton handleSubmit={useHandleSubmit} text="Submit" />
       </div>
     </div>
   );
 }
 
 export default LeaveMessage;
-
-

@@ -1,14 +1,10 @@
-interface Props{
-    head:string
+interface Props {
+  head: string;
 }
 
-function Midheading(props:Props) :JSX.Element {
-    const head = props.head;
-  return (
-    <div className="text-[#909498] text-lg font-medium mt-4" >
-            {head}
-      </div>
-  )
+function Midheading(props: Props): JSX.Element {
+  const head = props.head;
+  return <div className="text-[#909498] text-lg font-medium mt-4">{head}</div>;
 }
 
-export default Midheading
+export default Midheading;

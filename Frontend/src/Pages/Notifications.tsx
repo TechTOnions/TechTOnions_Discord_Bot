@@ -2,7 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import Heading from "../Components/Heading";
 import YT from "../Resources/images/YT.png";
 import { MenuDropdown } from "../Components/MenuDropdown";
-import { useGetYoutubeChannel, useRemoveChannel, useSetYoutubeCreatorChannel, useYtChannelSet } from "../Hooks/Youtube-Notification";
+import {
+  useGetYoutubeChannel,
+  useRemoveChannel,
+  useSetYoutubeCreatorChannel,
+  useYtChannelSet,
+} from "../Hooks/Youtube-Notification";
 
 function Notifications(): JSX.Element {
   return (
@@ -18,48 +23,54 @@ function Notifications(): JSX.Element {
         <RemoveChannel />
       </div>
       <div className="p-4 rounded-lg bg-cardBox">
-        <div className="text-2xl font-semibold text-white ">Subscribed Channel List</div>
-        <SubscribedChannelList/>
+        <div className="text-2xl font-semibold text-white ">
+          Subscribed Channel List
+        </div>
+        <SubscribedChannelList />
       </div>
     </div>
   );
 }
-const SubscribedChannelList = ()=>{
-  const [channels,setChannels]=useState([]);
-  const EffectRan= useRef(false)
-  useEffect(()=>{
-    if(EffectRan.current===false){
-      const fetchData =  async()=>{
+const SubscribedChannelList = () => {
+  const [channels, setChannels] = useState([]);
+  const EffectRan = useRef(false);
+  useEffect(() => {
+    if (EffectRan.current === false) {
+      const useFetchData = async () => {
         const response = await useGetYoutubeChannel();
-        setChannels(response)
-        EffectRan.current=true
-      }
-      fetchData();
+        setChannels(response);
+        EffectRan.current = true;
+      };
+      useFetchData();
     }
-    return ()=>{
-      EffectRan.current=true
-    }
-      
-  },[])
+    return () => {
+      EffectRan.current = true;
+    };
+  }, []);
 
-  return <div className="py-4">
-    {channels.map((item,key)=>(
-      <div key={key + 1} className="flex justify-between w-1/2 px-4 py-2 my-2 text-xl font-medium text-white rounded-lg bg-navColor">
-        <div>{key + 1}</div>
-        <div className="">{item}</div>
-      </div>
-    )) }
-  </div>
-} 
-const RemoveChannel = ()=>{
+  return (
+    <div className="py-4">
+      {channels.map((item, key) => (
+        <div
+          key={key + 1}
+          className="flex justify-between w-1/2 px-4 py-2 my-2 text-xl font-medium text-white rounded-lg bg-navColor"
+        >
+          <div>{key + 1}</div>
+          <div className="">{item}</div>
+        </div>
+      ))}
+    </div>
+  );
+};
+const RemoveChannel = () => {
   const [channel, SetChannel] = useState("");
-  const handleSubmit = async () => {
-    if(channel){
-      const response = await useRemoveChannel({channel});
+  const useHandleSubmit = async () => {
+    if (channel) {
+      const response = await useRemoveChannel({ channel });
       alert(response.message);
     }
   };
-  return(
+  return (
     <div className="rounded-lg bg-cardBox ">
       {/* TopBar */}
       <div className="flex items-center justify-between px-3 py-3 ">
@@ -86,25 +97,30 @@ const RemoveChannel = ()=>{
         <button
           type="button"
           className="px-6 py-1 font-medium rounded-md bg-gradient-to-r from-red-600 bg- to-red-800"
-          onClick={handleSubmit}
+          onClick={useHandleSubmit}
         >
           Remove
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 export function NotificationPopUp(): JSX.Element {
   const [channel, SetChannel] = useState("");
-  
-  
+
   const [value, setValue] = useState<string | unknown>();
   const guild_id = window.localStorage.getItem("guild_id") as string;
-  const handleSubmit = async () => {
-    if(value){
-      const response = await useYtChannelSet({guild_id,channel_id:value as string});
-      const ChannelSetResponse = await useSetYoutubeCreatorChannel({guild_id,yt_Channel_name:channel});
-      if(response && ChannelSetResponse){
+  const useHandleSubmit = async () => {
+    if (value) {
+      const response = await useYtChannelSet({
+        guild_id,
+        channel_id: value as string,
+      });
+      const ChannelSetResponse = await useSetYoutubeCreatorChannel({
+        guild_id,
+        yt_Channel_name: channel,
+      });
+      if (response && ChannelSetResponse) {
         alert("Channel Added Successfully");
       }
     }
@@ -112,7 +128,7 @@ export function NotificationPopUp(): JSX.Element {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setValue(e.target.value);
   };
-  return (  
+  return (
     <div className="rounded-lg bg-cardBox ">
       {/* TopBar */}
       <div className="flex items-center justify-between px-3 py-3 ">
@@ -126,7 +142,7 @@ export function NotificationPopUp(): JSX.Element {
         Enter the Youtube Channel ID.
       </div>
       <div>
-        <MenuDropdown handleChange={handleChange} value={value}/>
+        <MenuDropdown handleChange={handleChange} value={value} />
       </div>
 
       <div className="w-full px-3 my-3 ">
@@ -143,7 +159,7 @@ export function NotificationPopUp(): JSX.Element {
         <button
           type="button"
           className="px-6 py-1 font-medium rounded-md bg-gradient-to-r from-cyan-500 to-blue-500"
-          onClick={handleSubmit}
+          onClick={useHandleSubmit}
         >
           Submit
         </button>
