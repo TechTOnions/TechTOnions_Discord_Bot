@@ -101,7 +101,6 @@ function Commands(): JSX.Element {
           </svg>
         </div>
       </div>
-
     </div>
   );
 }

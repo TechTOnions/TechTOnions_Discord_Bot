@@ -29,12 +29,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <ProtectedRoute />,
-    errorElement:<ErrorRouter/>,
+    errorElement: <ErrorRouter />,
     children: [
       {
         path: "",
         element: <MainRoute />,
-        errorElement:<ErrorRouter/>,
+        errorElement: <ErrorRouter />,
         children: [
           {
             path: "",
@@ -112,18 +112,20 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
-    children:[
+    children: [
       {
-        path:'home',
-        element:<Homepage/>
-      },{
-        path:'about-us',
-        element:<AboutPage/>
-      },{
-        path:'contact-us',
-        element:<ContactPage/>
-      }
-    ]
+        path: "home",
+        element: <Homepage />,
+      },
+      {
+        path: "about-us",
+        element: <AboutPage />,
+      },
+      {
+        path: "contact-us",
+        element: <ContactPage />,
+      },
+    ],
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -131,5 +133,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <RecoilRoot>
       <RouterProvider router={router} />
     </RecoilRoot>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

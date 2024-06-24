@@ -1,5 +1,10 @@
-import {Navigate, Outlet, useLocation, useSearchParams } from "react-router-dom";
-import {useSetLogin } from "../Hooks/Login-hook";
+import {
+  Navigate,
+  Outlet,
+  useLocation,
+  useSearchParams,
+} from "react-router-dom";
+import { useSetLogin } from "../Hooks/Login-hook";
 import { LandingNavbar } from "./Landing page/components/LandingNavbar";
 import { Footer } from "./Landing page/components/Footer";
 import { useWindowSize } from "../Hooks/window-size";
@@ -12,18 +17,23 @@ function Login() {
     useSetLogin({ code });
   }
   const dimension = useWindowSize();
-  const {pathname} = useLocation()
+  const { pathname } = useLocation();
   return (
     <>
-    {dimension.width>1000? 
-    <div className="bg-black">
-      <LandingNavbar />
-      {pathname=='/login'? <Navigate to={'home'}/> : <Navigate to={'home'}/> }
-      <Outlet />
-      <Footer />
-    </div>:
-     <DimensionIssue/>
-    }
+      {dimension.width > 1000 ? (
+        <div className="bg-black">
+          <LandingNavbar />
+          {pathname == "/login" ? (
+            <Navigate to={"home"} />
+          ) : (
+            <Navigate to={"home"} />
+          )}
+          <Outlet />
+          <Footer />
+        </div>
+      ) : (
+        <DimensionIssue />
+      )}
     </>
   );
 }

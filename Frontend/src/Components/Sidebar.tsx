@@ -9,7 +9,7 @@ function Sidebar() {
       <div className="">
         {DataSidebar.map((item, key) => (
           <div
-            className={`${pathname==item.route?'text-white font-medium bg-hoverbg rounded':'text-gray-400'}`}
+            className={`${pathname == item.route ? "text-white font-medium bg-hoverbg rounded" : "text-gray-400"}`}
           >
             <Subsidebar
               key={key}

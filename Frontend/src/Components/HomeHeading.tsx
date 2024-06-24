@@ -4,7 +4,6 @@ interface Props {
 
 function HomeHeading(props: Props): JSX.Element {
   const { name } = props;
-  
 
   return (
     <div className="">

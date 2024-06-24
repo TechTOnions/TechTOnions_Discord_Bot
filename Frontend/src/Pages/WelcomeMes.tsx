@@ -1,4 +1,4 @@
-import {useState } from "react";
+import { useState } from "react";
 import Heading from "../Components/Heading";
 import { useSelectChannel, useSetWelcomeMessage } from "../Hooks/Message-Hook";
 import { SubmitButton } from "../Components/Button";
@@ -10,20 +10,25 @@ const defaultText =
 
 function WelcomeMes(): JSX.Element {
   const [message, setMessage] = useState(defaultText);
-  const [value, setValue] = useState<string|unknown>();
+  const [value, setValue] = useState<string | unknown>();
   const ChannelArrays = useRecoilValue(ChannelArray);
 
   const useHandleSubmit = async () => {
     if (value) {
-      const response = await useSetWelcomeMessage({message});
-      const responseChannel=  await useSelectChannel({guild_id:window.localStorage.getItem('guild_id') as string, channel_id:value as string})
-      
-      if(response && responseChannel){
-        alert("Welcome Message Updated on " + `"${ChannelArrays?.find((channel)=>channel.id===value)?.channel}" Channel`)
+      const response = await useSetWelcomeMessage({ message });
+      const responseChannel = await useSelectChannel({
+        guild_id: window.localStorage.getItem("guild_id") as string,
+        channel_id: value as string,
+      });
+
+      if (response && responseChannel) {
+        alert(
+          "Welcome Message Updated on " +
+            `"${ChannelArrays?.find((channel) => channel.id === value)?.channel}" Channel`,
+        );
       }
-    }
-    else{
-      alert("Please select a channel")
+    } else {
+      alert("Please select a channel");
     }
   };
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -40,7 +45,7 @@ function WelcomeMes(): JSX.Element {
         </div>
 
         <div>
-          <MenuDropdown handleChange={handleChange} value={value}/>
+          <MenuDropdown handleChange={handleChange} value={value} />
         </div>
 
         <textarea
@@ -56,13 +61,10 @@ function WelcomeMes(): JSX.Element {
         ></textarea>
       </div>
       <div className="mt-4">
-
-      <SubmitButton handleSubmit={useHandleSubmit}  text="Submit"/>
+        <SubmitButton handleSubmit={useHandleSubmit} text="Submit" />
       </div>
     </div>
   );
 }
 
 export default WelcomeMes;
-
-

@@ -44,8 +44,12 @@ export const LinkedIn = () => {
 };
 export const Github = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 transition w-8 hover:fill-current hover:text-[#4078c0] hover:transition"
-    fill="#ffffff" viewBox="0 0 496 512">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-8 transition w-8 hover:fill-current hover:text-[#4078c0] hover:transition"
+      fill="#ffffff"
+      viewBox="0 0 496 512"
+    >
       <path
         d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6
              0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3
@@ -65,10 +69,16 @@ export const Github = () => {
     </svg>
   );
 };
-export const X= ()=>{
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 transition w-8 hover:fill-current hover:text-[#000000] hover:transition"
-        fill="#ffffff" viewBox="0 0 448 512"><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm297.1 84L257.3 234.6 379.4 396H283.8L209 298.1 123.3 396H75.8l111-126.9L69.7 116h98l67.7 89.5L313.6 116h47.5zM323.3 367.6L153.4 142.9H125.1L296.9 367.6h26.3z"/></svg>
-    )
-}
-// export const 
+export const X = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-8 transition w-8 hover:fill-current hover:text-[#000000] hover:transition"
+      fill="#ffffff"
+      viewBox="0 0 448 512"
+    >
+      <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm297.1 84L257.3 234.6 379.4 396H283.8L209 298.1 123.3 396H75.8l111-126.9L69.7 116h98l67.7 89.5L313.6 116h47.5zM323.3 367.6L153.4 142.9H125.1L296.9 367.6h26.3z" />
+    </svg>
+  );
+};
+// export const
